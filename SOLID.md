@@ -230,7 +230,7 @@ public class Service {
 
 Ici, Service est couplé à une implémentation. C’est rigide et difficile à tester.
 
-## ✅ Résumé des principes SOLID en Java :
+# ✅ Résumé des principes SOLID en Java :
 
 | Principe | Résumé                                                              |
 | -------- | ------------------------------------------------------------------- |
