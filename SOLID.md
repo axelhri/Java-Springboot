@@ -87,4 +87,42 @@ public class Remise {
 }
 ```
 
-Le code devient difficile à maintenir au fur et à mesure qu'on ajoute des cas. On modifie constamment la même méthod
+Le code devient difficile à maintenir au fur et à mesure qu'on ajoute des cas. On modifie constamment la même méthod.
+
+# L — Liskov Substitution Principle (LSP)
+
+## 🧩 Principe de substitution de Liskov
+
+### 📖 Définition :
+
+Une sous-classe doit pouvoir remplacer sa classe parente sans provoquer d’erreur ou modifier le comportement attendu du programme.
+
+### ✅ Exemple correct :
+
+```java
+public class Oiseau {
+    public void voler() { }
+}
+
+public class Hirondelle extends Oiseau {
+    @Override
+    public void voler() {
+        // comportement de vol
+    }
+}
+```
+
+Hirondelle peut remplacer Oiseau dans n'importe quel contexte sans créer de bug.
+
+### ❌ Mauvais exemple :
+
+```java
+public class Autruche extends Oiseau {
+    @Override
+    public void voler() {
+        throw new UnsupportedOperationException("Les autruches ne volent pas !");
+    }
+}
+```
+
+Autruche viole LSP : elle hérite d’un comportement qu’elle ne peut pas assumer (voler).
