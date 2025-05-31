@@ -126,3 +126,106 @@ public class Autruche extends Oiseau {
 ```
 
 Autruche viole LSP : elle hérite d’un comportement qu’elle ne peut pas assumer (voler).
+
+# I — Interface Segregation Principle (ISP)
+
+## 🧩 Principe de ségrégation des interfaces
+
+### 📖 Définition :
+
+Il est préférable d’avoir plusieurs interfaces spécifiques, plutôt qu’une grande interface générique que les classes doivent implémenter même si elles n’en ont pas besoin.
+
+### ✅ Exemple correct :
+
+```java
+public interface Imprimable {
+    void imprimer();
+}
+
+public interface Scannable {
+    void scanner();
+}
+
+public class Imprimante implements Imprimable {
+    public void imprimer() { }
+}
+
+public class Scanner implements Scannable {
+    public void scanner() { }
+}
+```
+
+Chaque classe implémente uniquement les comportements dont elle a besoin.
+
+### ❌ Mauvais exemple :
+
+```java
+public interface MachineMultifonction {
+    void imprimer();
+    void scanner();
+    void faxer();
+}
+
+public class ImprimanteBasique implements MachineMultifonction {
+    public void imprimer() { }
+    public void scanner() {
+        throw new UnsupportedOperationException();
+    }
+    public void faxer() {
+        throw new UnsupportedOperationException();
+    }
+}
+```
+
+L’interface oblige à implémenter des méthodes inutiles. Cela viole ISP.
+
+# D — Dependency Inversion Principle (DIP)
+
+## 🧩 Principe d’inversion des dépendances
+
+### 📖 Définition :
+
+Les modules de haut niveau ne doivent pas dépendre des modules de bas niveau, mais tous deux doivent dépendre d’abstractions.
+Cela permet de découpler les composants et de faciliter les tests.
+
+### ✅ Exemple correct :
+
+```java
+public interface Stockage {
+    void sauvegarder(String données);
+}
+
+public class BaseDeDonnees implements Stockage {
+    public void sauvegarder(String données) {
+        // logique de sauvegarde
+    }
+}
+
+public class Service {
+    private final Stockage stockage;
+
+    public Service(Stockage stockage) {
+        this.stockage = stockage;
+    }
+
+    public void traiter() {
+        stockage.sauvegarder("données");
+    }
+}
+```
+
+Le service dépend d’une abstraction, pas d’une implémentation concrète.
+
+### ❌ Mauvais exemple :
+
+```java
+public class Service {
+    private final BaseDeDonnees db = new BaseDeDonnees();
+
+    public void traiter() {
+        db.sauvegarder("données");
+    }
+}
+```
+
+Ici, Service est couplé à une implémentation. C’est rigide et difficile à tester.
