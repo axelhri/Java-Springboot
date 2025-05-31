@@ -42,3 +42,49 @@ public class Facture {
 ```
 
 Cette classe a trop de responsabilités. Elle violerait SRP car elle gère à la fois la logique métier, la présentation et la persistance.
+
+# O — Open/Closed Principle (OCP)
+
+## 🧩 Principe d’ouverture/fermeture
+
+### 📖 Définition :
+
+Un module doit être ouvert à l’extension, mais fermé à la modification.
+Autrement dit, on doit pouvoir ajouter de nouvelles fonctionnalités sans modifier le code existant.
+
+### ✅ Exemple correct :
+
+```java
+public interface Remise {
+    double appliquer(double montant);
+}
+
+public class RemiseStandard implements Remise {
+    public double appliquer(double montant) {
+        return montant;
+    }
+}
+
+public class RemiseClientFidele implements Remise {
+    public double appliquer(double montant) {
+        return montant * 0.9;
+    }
+}
+```
+
+On étend le comportement en créant une nouvelle classe, sans modifier la classe de base.
+
+### ❌ Mauvais exemple :
+
+```java
+public class Remise {
+    public double appliquer(double montant, String typeClient) {
+        if (typeClient.equals("fidele")) {
+            return montant * 0.9;
+        }
+        return montant;
+    }
+}
+```
+
+Le code devient difficile à maintenir au fur et à mesure qu'on ajoute des cas. On modifie constamment la même méthod
