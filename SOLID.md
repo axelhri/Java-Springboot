@@ -229,3 +229,13 @@ public class Service {
 ```
 
 Ici, Service est couplé à une implémentation. C’est rigide et difficile à tester.
+
+## ✅ Résumé des principes SOLID en Java :
+
+| Principe | Résumé                                                              |
+| -------- | ------------------------------------------------------------------- |
+| SRP      | Une classe, une seule responsabilité                                |
+| OCP      | Étendre le comportement sans modifier le code existant              |
+| LSP      | Les sous-classes doivent se substituer à la classe parente sans bug |
+| ISP      | Créer des interfaces spécifiques plutôt qu’une générale             |
+| DIP      | Dépendre des interfaces, pas des implémentations                    |
