@@ -27,7 +27,7 @@ C’est l’entité JPA qui correspond à la table en base de données.
 
 > On y définit les attributs comme `id`, `name`, `email`, etc.
 
-- [Exemple](Code/model/Student.java)
+- [Exemple](Code/Student/model/Student.java)
 
 ## ✅ 2. Créer le DTO
 
@@ -36,7 +36,7 @@ Ce fichier représente les données échangées avec le client (REST API).
 
 > Il est séparé du modèle pour éviter d’exposer directement l’entité.
 
-- [Exemple](Code/dto/StudentDTO.java)
+- [Exemple](Code/Student/dto/StudentDTO.java)
 
 ## ✅ 3. Créer le Mapper
 
@@ -45,7 +45,7 @@ Il convertit un `Student` ↔ `StudentDTO`.
 
 > Il est séparé du modèle pour éviter d’exposer directement l’entité.
 
-- [Exemple](Code/mapper/StudentMapper.java)
+- [Exemple](Code/Student/mapper/StudentMapper.java)
 
 ## ✅ 4. Créer le Repository
 
@@ -54,7 +54,7 @@ Utilise `JpaRepository` pour accéder à la base.
 
 > Par exemple, `findStudentByEmail(String email)`.
 
-- [Exemple](Code/repository/StudentRepository.java)
+- [Exemple](Code/Student/repository/StudentRepository.java)
 
 ## ✅ 5. Définir l’interface service
 
@@ -68,7 +68,7 @@ Tu définis les méthodes du service :
 
 > C’est une abstraction, utile pour séparer le contrat de l’implémentation.
 
-- [Exemple](Code/service/interface/StudentServiceInterface.java)
+- [Exemple](Code/Student/service/interface/StudentServiceInterface.java)
 
 ## ✅ 6. Implémenter le service métier
 
@@ -81,7 +81,7 @@ Tu utilises :
 - le mapper
 - tu appliques la validation métier
 
-- [Exemple](Code/service/StudentService.java)
+- [Exemple](Code/Student/service/StudentService.java)
 
 ## ✅ 7. Créer le contrôleur (API)
 
@@ -90,7 +90,7 @@ C’est le point d’entrée des appels REST (`GET`, `POST`, etc.)
 
 > Le contrôleur appelle le service et renvoie des `ResponseEntity`.
 
-- [Exemple](Code/controller/StudentController.java)
+- [Exemple](Code/Student/controller/StudentController.java)
 
 # 📝 Résumé en chaîne logique :
 
