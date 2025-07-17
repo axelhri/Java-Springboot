@@ -14,8 +14,8 @@ com.example.demo.student
 │   └── StudentRepository.java
 ├── service/
 │   ├── StudentService.java
-│   └── interface/
-│       └── StudentServiceInterface.java
+├── interface/
+│   └── StudentServiceInterface.java
 ```
 
 # 🧭 Étapes de développement
