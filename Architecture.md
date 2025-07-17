@@ -13,7 +13,7 @@ com.example.demo.student
 ├── repository/
 │   └── StudentRepository.java
 ├── service/
-│   ├── StudentService.java
+│   └── StudentService.java
 ├── interface/
 │   └── StudentServiceInterface.java
 ```
